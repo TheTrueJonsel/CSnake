@@ -1,0 +1,13 @@
+*
+1
++
+~
+!
+`
+
+Um eine source datei zu compilen und mit raylib libraries zu linken 
+kann ich den folgenden befehl verwenden:
+cc main.c -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
+
+erledigte pomi Bus: eins
+erledigte pomi TOP: 0
