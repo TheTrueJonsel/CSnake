@@ -3,6 +3,7 @@
 
 #define MENU_COLOR CLITERAL(Color){ 20, 20, 20, 255 }
 #define MENU_BUTTON_COLOR CLITERAL(Color){ 190, 190, 190, 255 }
+#define GAME_COLOR CLITERAL(Color){ 0, 0, 40, 255 }
 
 typedef enum {
     ST_GAME,
@@ -137,7 +138,7 @@ void updateGame(){
 }
 
 void drawGame(){
-    ClearBackground(BROWN);
+    ClearBackground(GAME_COLOR);
 
     // loop through the entire snake array, except the head, and draw it
     for(int i = segmentCount - 1; i > 0; i--){
