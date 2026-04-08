@@ -105,35 +105,31 @@ void updateGame(){
         }
 
         timer = 0.0f;
-    }
 
-    
+        // food collision
+        if(snake[0].x == currentFood.x && snake[0].y == currentFood.y){
+            // adding a tail segment
+            snake[segmentCount].x = snake[segmentCount-1].x;
+            snake[segmentCount].y = snake[segmentCount-1].y;
 
-    
+            currentScore++;
+            segmentCount++;
+            spawnFood();
+        }
 
-    // food collision
-    if(snake[0].x == currentFood.x && snake[0].y == currentFood.y){
-        // adding a tail segment
-        snake[segmentCount].x = snake[segmentCount-1].x;
-        snake[segmentCount].y = snake[segmentCount-1].y;
+        // self collision
+        for(int i = 1; i < segmentCount; i++){
+            if(snake[0].x == snake[i].x && snake[0].y == snake[i].y){
+                currentState = ST_MENU;
+                initGame();
+            }
+        }
 
-        currentScore++;
-        segmentCount++;
-        spawnFood();
-    }
-
-    // self collision
-    for(int i = 1; i < segmentCount; i++){
-        if(snake[0].x == snake[i].x && snake[0].y == snake[i].y){
+        // wall collisions
+        if(snake[0].x < 0 || snake[0].x > gameBoardLength || snake[0].y < 0 || snake[0].y > gameBoardLength){
             currentState = ST_MENU;
             initGame();
         }
-    }
-
-    // wall collisions
-    if(snake[0].x < 0 || snake[0].x > gameBoardLength || snake[0].y < 0 || snake[0].y > gameBoardLength){
-        currentState = ST_MENU;
-        initGame();
     }
 }
 
